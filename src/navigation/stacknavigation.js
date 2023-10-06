@@ -6,6 +6,7 @@ import Login from "../screens/Login";
 
 // voluntierHome
 import VoluntierHome from "../screens/VoluntierHome";
+import Scan from "../pages/Volutier/Scan";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ export default function MyStack(){
             <Stack.Navigator>
                 <Stack.Screen name="login" component={Login} options={{headerShown:false}} />
                 <Stack.Screen name="VHome" component={VoluntierHome} options={{headerShown:false}} />
+                <Stack.Screen name="scan" component={Scan} />
             </Stack.Navigator>
         </NavigationContainer>
     )
