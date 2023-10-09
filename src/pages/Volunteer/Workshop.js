@@ -1,29 +1,46 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { TouchableOpacity } from "react-native";
-import { View,Text ,StyleSheet,} from "react-native";
+import { View,Text ,StyleSheet} from "react-native";
 import { Button } from 'react-native-paper';
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const Scan =({route})=>{
+const Workshop =({route,navigation})=>{
     const {event} = route.params;
+   let statusOnline = "online";
+   let statusOffline = "offline";
+   let Network = statusOnline;
+   
+   const handleNavigationToScan=()=>{
+        navigation.navigate('QRCode Scan');
+   }
 
+   const handleNavigateToInputData=()=>{
+    navigation.navigate('Input Data');
+   }
     return(
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView 
+            style={[styles.container ,
+                {
+                    backgroundColor: Network === statusOnline ? '#b0c4de' : '#ffff',
+                },
+            ]}
+        >
+            
             <View style={styles.viewTextEvent}>
                 <Text style={styles.textEvent}>{event}</Text>
             </View>
             <View style={styles.btnContainer}>  
-              <TouchableOpacity >
+              <TouchableOpacity onPress={handleNavigationToScan} >
                 <Button mode="contained" textColor="black" style={styles.btn}
                   
-                ><Text style={{fontSize:20}}>Scan</Text></Button>
+                ><Text style={{fontSize:20}} >Scan</Text></Button>
               </TouchableOpacity> 
                 
             </View>
             <View style={styles.textClick}>
                 <Text style={styles.text1}>If QR won't work?{" "}</Text>
-                <TouchableOpacity  >
+                <TouchableOpacity onPress={handleNavigateToInputData} >
                     <Text style={styles.text2}>Click</Text>
                 </TouchableOpacity>
             </View>
@@ -32,13 +49,13 @@ const Scan =({route})=>{
     )
 }
 
-export default Scan;
+export default Workshop;
 
 const styles = StyleSheet.create({
     container:{
         flex:1,
         justifyContent:'space-evenly',
-        backgroundColor:'#f8f8ff'
+        // backgroundColor:'#f8f8ff'
         },
    
     btn:{
@@ -79,9 +96,5 @@ const styles = StyleSheet.create({
         fontWeight:'900',
         fontSize:30,
       
-    }
-   
-     
-     
-    
+    } 
 })

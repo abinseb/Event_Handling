@@ -37,7 +37,7 @@ const VoluntierHome = ({navigation}) => {
     const eventString = String(event); // Convert event to a string
     alert(`click ${eventString}`);
     console.log(eventString);
-    navigation.navigate("scan" ,{event}); // Pass eventString as a string
+    navigation.navigate("tab" ,{event}); // Pass eventString as a string
   }
   
 
