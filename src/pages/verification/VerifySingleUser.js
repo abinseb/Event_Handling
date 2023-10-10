@@ -3,40 +3,29 @@ import React from "react";
 import { StyleSheet,View,Text } from "react-native";
 import { Divider } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
-import card from "../../components/Card";
-import CardView from "../../components/Card";
+import {Button} from "react-native-paper";
+import UserProfileCard from "../../components/ProfileCard";
 const verifySingleUser =({route})=>{
     const {data} = route.params;
     return(
         
         <SafeAreaView style={styles.container}>
             
-           {/* <View style={styles.ViewBox}>
-                <View style={styles.TextView}>
-                    <Text style={styles.textName}>Vimal</Text>
-                </View>
-                <View style={styles.textDetailsView}>
-                            <View style={styles.profileBox}>
-                                <Text style={styles.label}>Id: </Text>
-                                <Text style={styles.value}>123</Text>
-                            </View>
-                           
-                            <View style={styles.profileBox}>
-                                <Text style={styles.label}>Email: </Text>
-                                <Text style={styles.value}>vimal@123</Text>
-                            </View>
-                            <View style={styles.profileBox}>
-                                <Text style={styles.label}>Institution: </Text>
-                                <Text style={styles.value}>college of engineering vatakara</Text>
-                            </View>
-                           
-                </View>
-                        
-              
-
-           </View> */}
-       <CardView/>
-
+          <UserProfileCard data={data} />
+          
+          <View style={styles.buttonView}>
+                  <Button mode="contained" style={styles.verifyButton} 
+                      
+                  >
+                      Verify
+                  </Button>
+                  <Button mode="contained" style={styles.cancelButton} 
+                      
+                  >
+                      Cancel
+                  </Button>
+        </View>
+        
         </SafeAreaView>
         
     )
@@ -50,40 +39,24 @@ container:{
     justifyContent:'center',
     backgroundColor:'#b0c4de'
 },
-ViewBox:{
-    backgroundColor:'white',
-    width:'90%',
-    borderRadius:20,
-    height:'80%',
+verifyButton: {
+    backgroundColor: "#1e7898",
+    marginTop: 20,
+    height:50,
+     width:150,
+},
+cancelButton: {
+    backgroundColor: "#ff0000",
+    marginTop: 20,
+    marginLeft: 20,
+    height:50,
+    width:100
+},
+buttonView: {
     alignSelf:'center',
-    flex:0.8,
+    flexDirection: 'row',
+    marginTop: 20,
+    marginLeft: 50,
 },
-TextView:{
-    alignItems:'center',
-    margin:10,
-},
-textName:{
-    fontSize:23,
-    fontWeight:'700',
-    margin:20,
-},
-textDetailsView:{
-    alignItems:'center',
-    marginTop:10,
 
-},
-profileBox:{
-    flexDirection:'row'
-},
-label: {
-    fontWeight: "bold",
-    color: "#333",
-    fontSize:10,
-},
-value:{
-    flex:1,
-    fontSize:10,
-    fontWeight:'bold',
-    fontFamily:'sans-serif'
-},
 })
