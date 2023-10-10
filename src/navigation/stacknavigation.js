@@ -12,6 +12,9 @@ import qrCodeScan from "../pages/Volunteer/QRCodeScan";
 import validateData from "../pages/Volunteer/ValidateData";
 import InputData from "../pages/Volunteer/InputForm";
 
+// verification
+import verifySingleUser from "../pages/verification/VerifySingleUser";
+import bulkVerification from "../pages/verification/BulkVerification";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +29,11 @@ export default function MyStack(){
                 <Stack.Screen name='QRCode Scan' component={qrCodeScan} />
                 <Stack.Screen name="Validate Data" component={validateData} />
                 <Stack.Screen name ="Input Data" component={InputData} />
+
+                {/* verification */}
+                <Stack.Screen name="verifyuser" component={verifySingleUser} options={{headerShown:false}} />
+                <Stack.Screen name ="BulkVerification" component={bulkVerification} />
+
             </Stack.Navigator>
         </NavigationContainer>
     )

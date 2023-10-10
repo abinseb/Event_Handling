@@ -16,7 +16,7 @@ const qrCodeScan =({navigation})=>{
     }
 
 const navigateAndPassDataForValidate =(data)=>{
-        navigation.navigate("Validate Data",{data});
+        navigation.navigate("verifyuser",{data});
 }
 
 
