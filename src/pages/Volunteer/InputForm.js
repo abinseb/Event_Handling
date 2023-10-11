@@ -1,7 +1,14 @@
 import * as React from "react";
+import { useState } from "react";
 import { Box,Heading, VStack, FormControl, Input,Button, Center, NativeBaseProvider } from "native-base";
 
-const InputData=()=>{
+const InputData=({navigation})=>{
+  const [id , setId] = useState('');
+
+  const handleNavigation=()=>{
+    console.log(id);
+      navigation.navigate('verifyuser',{id});
+  }
     return(
         <NativeBaseProvider>
         <Center w="100%">
@@ -17,12 +24,12 @@ const InputData=()=>{
               <FormControl>
                 <FormControl.Label>ID OR Mobile Number </FormControl.Label>
                 <Input 
-                  
-                 
+                value={id}
+                onChangeText={(value)=>{setId(value)}}
                 />
               </FormControl>
               
-              <Button mt="2" colorScheme="teal" bg="#1e7898" >
+              <Button mt="2" colorScheme="teal" bg="#1e7898" onPress={handleNavigation} >
                 Search..
               </Button>
              

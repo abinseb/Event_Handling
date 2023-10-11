@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS,LOGOUT_SUCCESS } from "./Authactions";
+import { LOGIN_SUCCESS,LOGOUT_SUCCESS } from "./Actions";
 
 const initialState = {
     user:null,

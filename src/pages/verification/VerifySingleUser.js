@@ -1,17 +1,41 @@
 // import { Divider, NativeBaseProvider } from "native-base";
-import React from "react";
-import { StyleSheet,View,Text } from "react-native";
-import { Divider } from "react-native-paper";
+import React, { useEffect } from "react";
+import { StyleSheet,View,BackHandler } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {Button} from "react-native-paper";
 import UserProfileCard from "../../components/ProfileCard";
-const verifySingleUser =({route})=>{
-    const {data} = route.params;
+import { UserDataByUserId } from "../../Connection/API_Connection/fetchData";
+const verifySingleUser =({route , navigation})=>{
+    const {id} = route.params;
+
+    // fetching user databyid
+    useEffect(async()=>{
+        const userDetails = await UserDataByUserId(id);
+        console.log("userDatadisplay",userDetails);
+    },[])
+    // navigate To Scan Button Page
+    const navigateToScan=()=>{
+        navigation.navigate("tab",{});
+    }
+    // avoid back navigation
+    useEffect(()=>{
+        const handleBackpress =()=>{
+            navigateToScan();
+            return true;
+        };
+        const backHandler = BackHandler.addEventListener(
+            "hardwareBackPress",
+            handleBackpress
+        );
+        return ()=>{
+            backHandler.remove();
+        }
+    },[])
     return(
         
         <SafeAreaView style={styles.container}>
             
-          <UserProfileCard data={data} />
+          <UserProfileCard id={id} />
           
           <View style={styles.buttonView}>
                   <Button mode="contained" style={styles.verifyButton} 
@@ -20,9 +44,9 @@ const verifySingleUser =({route})=>{
                       Verify
                   </Button>
                   <Button mode="contained" style={styles.cancelButton} 
-                      
+                      onPress={navigateToScan}
                   >
-                      Cancel
+                      back
                   </Button>
         </View>
         

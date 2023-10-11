@@ -1,7 +1,8 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 
-const UserProfileCard = ({ data }) => {
+const UserProfileCard = (props) => {
+  const {id} = props;
   return (
     <View style={styles.container}>
       <View style={styles.TextView}>
@@ -10,7 +11,7 @@ const UserProfileCard = ({ data }) => {
       <View style={styles.textDetailsView}>
         <View style={styles.profileBox}>
           <Text style={styles.label}>Id: </Text>
-          <Text style={styles.value}>123</Text>
+          <Text style={styles.value}>{id}</Text>
         </View>
         <View style={styles.profileBox}>
           <Text style={styles.label}>Email: </Text>

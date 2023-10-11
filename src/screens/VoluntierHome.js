@@ -4,6 +4,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Title, Paragraph } from 'react-native-paper';
 import { TouchableOpacity } from "react-native";
+
+// importing event actions from redux
+import { eventSelect } from "../reduxStore/Actions";
 // import { useNavigation } from "@react-navigation/native";
 import AppBar from "../components/AppBar";
 const VoluntierHome = ({navigation}) => {
@@ -38,6 +41,7 @@ const VoluntierHome = ({navigation}) => {
     alert(`click ${eventString}`);
     console.log(eventString);
     navigation.navigate("tab" ,{event}); // Pass eventString as a string
+    dispatch(eventSelect(event));
   }
   
 

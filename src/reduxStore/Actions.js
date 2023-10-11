@@ -15,3 +15,11 @@ export const loginUser =(userData)=>{
         dispatch(loginSuccess(userData));
     }
 }
+
+// event details
+export const eventSelect=(event)=>{
+    return{
+        type:'SET_EVENT_STRING',
+        payload:event,
+    };
+};

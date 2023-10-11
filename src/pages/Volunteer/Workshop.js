@@ -1,20 +1,34 @@
 
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { TouchableOpacity } from "react-native";
 import { View,Text ,StyleSheet} from "react-native";
 import { Button } from 'react-native-paper';
 import { SafeAreaView } from "react-native-safe-area-context";
+import { CheckConnection } from "../../Connection/API_Connection/CheckConnection";
+
+import { UseSelector, useSelector } from "react-redux";
 
 const Workshop =({route,navigation})=>{
     const {event} = route.params;
-   let statusOnline = "online";
-   let statusOffline = "offline";
-   let Network = statusOnline;
-   
+    const eventString = useSelector((state)=>state.event.eventString);
+  
+   const [network,setNetwork] = useState('');
+useEffect(async()=>{
+   let conection = await CheckConnection();
+    console.log('connectionuu',conection);
+    if(conection ===true){
+       setNetwork('Online')
+    }
+    else{
+        setNetwork('Offline');
+    }
+},[])
+//    navigation to scanner
    const handleNavigationToScan=()=>{
         navigation.navigate('QRCode Scan');
    }
 
+//    navigation to manualy input the id 
    const handleNavigateToInputData=()=>{
     navigation.navigate('Input Data');
    }
@@ -22,13 +36,16 @@ const Workshop =({route,navigation})=>{
         <SafeAreaView 
             style={[styles.container ,
                 {
-                    backgroundColor: Network === statusOnline ? '#b0c4de' : '#ffff',
+                    backgroundColor: network === 'Online' ? '#b0c4de' : '#ffff',
                 },
             ]}
         >
+            <View style={styles.viewNetwork}>
+                <Text>{network}</Text>
+            </View>
             
             <View style={styles.viewTextEvent}>
-                <Text style={styles.textEvent}>{event}</Text>
+                <Text style={styles.textEvent}>{eventString}</Text>
             </View>
             <View style={styles.btnContainer}>  
               <TouchableOpacity onPress={handleNavigationToScan} >
@@ -96,5 +113,11 @@ const styles = StyleSheet.create({
         fontWeight:'900',
         fontSize:30,
       
-    } 
+    },
+    viewNetwork:{
+        top:0,
+        position:'absolute',
+        alignSelf:'center',
+        margin:10
+    }
 })

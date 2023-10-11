@@ -15,8 +15,8 @@ const qrCodeScan =({navigation})=>{
         navigateAndPassDataForValidate(data);
     }
 
-const navigateAndPassDataForValidate =(data)=>{
-        navigation.navigate("verifyuser",{data});
+const navigateAndPassDataForValidate =(id)=>{
+        navigation.navigate("verifyuser",{id});
 }
 
 
@@ -36,7 +36,7 @@ const navigateAndPassDataForValidate =(data)=>{
                 onBarCodeScanned={scanned ? null ||false :handleBarCodeScanned}
                 style={styles.absoluteFillObject}
             />
-
+            <Text>{qrdata}</Text>
         </SafeAreaView>
     )
 }
