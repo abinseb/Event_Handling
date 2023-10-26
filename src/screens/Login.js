@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Box, Text, Heading, VStack, FormControl, Input, Link, Button, HStack, Center, NativeBaseProvider } from "native-base";
 import { connect} from "react-redux";
 
-import { loginSuccess } from "../reduxStore/Authactions";
+import { loginSuccess } from "../reduxStore/Actions";
 
 const Login=({loginSuccess,navigation})=>{
 
