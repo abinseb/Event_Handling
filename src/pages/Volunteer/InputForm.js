@@ -6,8 +6,9 @@ const InputData=({navigation})=>{
   const [id , setId] = useState('');
 
   const handleNavigation=()=>{
-    console.log(id);
-      navigation.navigate('verifyuser',{id});
+    // console.log(id);
+    //   navigation.navigate('verifyuser',{id});
+    navigation.navigate('Userverify');
   }
     return(
         <NativeBaseProvider>

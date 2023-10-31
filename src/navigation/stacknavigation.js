@@ -15,6 +15,7 @@ import InputData from "../pages/Volunteer/InputForm";
 // verification
 import verifySingleUser from "../pages/verification/VerifySingleUser";
 import bulkVerification from "../pages/verification/BulkVerification";
+import UserVerification from "../pages/verification/UserVerification";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,7 @@ export default function MyStack(){
                 {/* verification */}
                 <Stack.Screen name="verifyuser" component={verifySingleUser} options={{headerShown:false}} />
                 <Stack.Screen name ="BulkVerification" component={bulkVerification} />
+                <Stack.Screen name="Userverify" component={UserVerification} />
 
             </Stack.Navigator>
         </NavigationContainer>
